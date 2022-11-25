@@ -46,7 +46,7 @@ class Task {
         });
     }
     delTask() {
-        if (!window.confirm('Sicuro di voler eliminare questo utente?')) {
+        if (!window.confirm('Sicuro di voler eliminare questa task?')) {
             return;
         }
         fetch('https://todo-list-eight-xi.vercel.app/data.json/' + this.id, {
