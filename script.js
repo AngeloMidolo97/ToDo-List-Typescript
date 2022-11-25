@@ -25,7 +25,7 @@ class Task {
         else {
             this.complete = true;
         }
-        fetch('https://todo-list-eight-xi.vercel.app/data.json/' + this.id, {
+        fetch('http://localhost:3000/todo/' + this.id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -37,7 +37,7 @@ class Task {
         if (!window.confirm('Sicuro di voler eliminare questa task?')) {
             return;
         }
-        fetch('https://todo-list-eight-xi.vercel.app/data.json/' + this.id, {
+        fetch('http://localhost:3000/todo/' + this.id, {
             method: 'DELETE'
         });
     }
@@ -77,7 +77,7 @@ class Task {
 getData();
 let array;
 function getData() {
-    fetch('https://todo-list-eight-xi.vercel.app/data.json').then((response) => {
+    fetch('http://localhost:3000/todo').then((response) => {
         return response.json();
     }).then((data) => {
         array = [];
@@ -104,7 +104,7 @@ function addData(data) {
             alert('Attenzione compilare il campo');
             return;
         }
-        let response = yield fetch('https://todo-list-eight-xi.vercel.app/data.json', {
+        let response = yield fetch('http://localhost:3000/todo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
