@@ -66,6 +66,7 @@ class Task {
         }
         btn1.addEventListener('click', () => {
             this.completa();
+            window.location.reload();
         });
         btn2.addEventListener('click', () => {
             this.delTask();
