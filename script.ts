@@ -37,7 +37,7 @@ class Task {
         }else{
             this.complete = true;
         }
-        fetch('http://localhost:3000/todo/' + this.id, {
+        fetch('https://todo-list-eight-xi.vercel.app/data.json/' + this.id, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
@@ -49,7 +49,7 @@ class Task {
         if (!window.confirm('Sicuro di voler eliminare questa task?')) {
             return;
         }
-        fetch('http://localhost:3000/todo/' + this.id, {
+        fetch('https://todo-list-eight-xi.vercel.app/data.json/' + this.id, {
             method: 'DELETE'
         });
     }
@@ -82,10 +82,12 @@ class Task {
 
         btn1.addEventListener('click', () => {
             this.completa();
+            window.location.reload();
         })
 
         btn2.addEventListener('click', () => {
             this.delTask();
+            window.location.reload();
         })
     }
 }
@@ -95,7 +97,7 @@ getData();
 let array: TaskInt[];
 
 function getData() {
-    fetch('http://localhost:3000/todo').then((response) => {
+    fetch('https://todo-list-eight-xi.vercel.app/data.json').then((response) => {
         return response.json();
     }).then((data: TaskInt[]) => {
         array = [];
@@ -115,6 +117,7 @@ btnTask.addEventListener('click', () => {
         complete: false
     }
     addData(newTask);
+    window.location.reload();
 })
 
 async function addData(data: NewTask) {
@@ -122,7 +125,7 @@ async function addData(data: NewTask) {
         alert('Attenzione compilare il campo');
         return;
     }
-    let response = await fetch('http://localhost:3000/todo', {
+    let response = await fetch('https://todo-list-eight-xi.vercel.app/data.json', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
